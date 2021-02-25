@@ -11,7 +11,8 @@ module.exports = {
   },
   output: {
     filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: ''
   },
   devServer: {
     port: 4200
@@ -34,6 +35,14 @@ module.exports = {
       {
         test: /\.s[ac]ss$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.(png|jpeg|gif)$/,
+        loader:'file-loader'
+      },
+      {
+        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        type: 'asset/inline'
       }
     ]
   }
